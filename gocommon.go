@@ -8,6 +8,12 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func testMe() {
-	println("hit me")
+var debug = flag.Bool("v", false, "set verbose logging")
+
+func ConfigureZerolog() {
+	zerolog.SetGlobalLevel(zerolog.InfoLevel)
+	if *debug {
+		zerolog.SetGlobalLevel(zerolog.DebugLevel)
+	}
+	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 }
