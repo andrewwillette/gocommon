@@ -10,7 +10,7 @@ import (
 
 var debug = flag.Bool("v", false, "set verbose logging")
 
-func ConfigureZerolog() {
+func ConfigureConsoleZerolog() {
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	if *debug {
 		zerolog.SetGlobalLevel(zerolog.DebugLevel)
